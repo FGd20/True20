@@ -6,9 +6,9 @@ directory.
 
 By default, FGII data is stored in /User/Username/AppData/Roaming/Fantasy Grounds
 
-The directory can be unzipped and placed in the rulesets subdirectory.  When a 
-fully liscenced host creates a new campaign, this ruleset should not be available.
-Changes to the ruleset will affect the campaign after creation.
+The directory should be placed in the FGII data "rulesets" subdirectory.  When a 
+fully licensed host creates a new campaign, the True20 should be available to 
+select.
 
-The extenstion on the .zip archive can also be renamed (.pak) and placed in the rulesets
-directory towards the same effect.
+Changes to the ruleset will affect campaign that are created using previous
+versions of the ruleset.
