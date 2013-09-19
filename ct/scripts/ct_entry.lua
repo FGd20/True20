@@ -355,8 +355,12 @@ function setDefensiveVisible(v)
 	reflexlabel.setVisible(v);
 	willsave.setVisible(v);
 	willlabel.setVisible(v);
+	toughnesssave.setVisible(v);
+	toughnesslabel.setVisible(v);
+	--[[ True20
 	sr.setVisible(v);
 	sr_label.setVisible(v);
+	]]--
 
 	specialdef.setVisible(v);
 	specialdeflabel.setVisible(v);

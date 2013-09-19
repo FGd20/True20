@@ -250,6 +250,7 @@ function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName
 	if sAbility and sAbility ~= "" then
 		if (sSave == "fortitude" and sAbility ~= "constitution") or
 				(sSave == "reflex" and sAbility ~= "dexterity") or
+				(sSave == "toughness" and sAbility ~= "constitution") or -- True20
 				(sSave == "will" and sAbility ~= "wisdom") then
 			local sAbilityEffect = DataCommon.ability_ltos[sAbility];
 			if sAbilityEffect then
@@ -347,6 +348,8 @@ function modSave(rSource, rTarget, rRoll)
 				sActionStat = "constitution";
 			elseif sSave == "reflex" then
 				sActionStat = "dexterity";
+			elseif sSave == "toughness" then -- True20
+				sActionStat = "constitution";
 			elseif sSave == "will" then
 				sActionStat = "wisdom";
 			end

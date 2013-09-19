@@ -443,7 +443,7 @@
 					</top>
 				</anchored>
 				<font>ct_header</font>
-				<static>HP</static>
+				<static>Bruise</static> <!-- True20 was HP -->
 			</stringcontrol>
 			<stringcontrol name="label_temp">
 				<anchored>
@@ -457,7 +457,7 @@
 					</top>
 				</anchored>
 				<font>ct_header</font>
-				<static>Temp</static>
+				<static>Daze</static> <!-- True20 was Temp -->
 			</stringcontrol>
 			<stringcontrol name="label_nonlethal">
 				<anchored>
@@ -471,7 +471,7 @@
 					</top>
 				</anchored>
 				<font>ct_header</font>
-				<static>Subd</static>
+				<static>Hurt</static> <!-- True20 was Subd -->
 			</stringcontrol>
 			<stringcontrol name="label_wounds">
 				<anchored>

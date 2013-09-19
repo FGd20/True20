@@ -389,6 +389,7 @@
 				</script>
 			</button_iconcycler>
 
+			<!-- True 20: Changes to combat tracker damage tracking will go here -->
 			<number_ct name="wounds">
 				<anchored>
 					<right>
@@ -845,7 +846,7 @@
 				</anchored>
 				<underlineoffset>-1</underlineoffset>
 				<multilinespacing>16</multilinespacing>
-				<tabtarget prev="sr" next="space" />
+				<tabtarget prev="toughness" next="space" />
 				<script>
 					function onInit()
 						setUnderline(true);
@@ -922,7 +923,7 @@
 					<text>Will</text>
 				</description>
 				<target>will</target>
-				<tabtarget prev="reflexsave" next="sr" />
+				<tabtarget prev="reflexsave" next="toughness" />
 			</number_ct_save>
 			<label_ct_sm name="willlabel">
 				<anchored>
@@ -931,6 +932,29 @@
 				<static>Will</static>
 			</label_ct_sm>
 
+			<!-- True20 -->
+			<number_ct_save name="toughnesssave">
+				<anchored>
+					<to>willsave</to>
+					<position>righthigh</position>
+					<offset>40,0</offset>
+				</anchored>
+				<description>
+				   <text>Toughness</text>
+				 </description>
+				 <target>toughness</target>
+				<tabtarget prev="willsave" next="specialdef" />
+			</number_ct_save>
+			<label_ct_sm name="toughnesslabel">
+				<anchored>
+					<to>toughnesssave</to>
+				</anchored>
+				<static>Tough</static>
+			</label_ct_sm>
+			
+			
+			
+			<!-- True20
 			<number_ct_underline name="sr">
 				<anchored>
 					<to>willsave</to>
@@ -945,6 +969,7 @@
 				</anchored>
 				<static>SR</static>
 			</label_ct_sm>
+			-->
 
 			<number_ct_underline name="ac_final">
 				<anchored>
@@ -961,7 +986,7 @@
 				<anchored>
 					<to>ac_final</to>
 				</anchored>
-				<static>AC</static>
+				<static>Def</static>
 			</label_ct_sm>
 			<number_ct_underline name="ac_flatfooted">
 				<anchored>
@@ -1370,7 +1395,7 @@
 					</top>
 				</anchored>
 				<font>ct_header</font>
-				<static>HP</static>
+				<static>Bruise</static> <!-- True20 was HP; todo - add function -->
 			</stringcontrol>
 			<stringcontrol name="label_temp">
 				<anchored>
@@ -1384,7 +1409,7 @@
 					</top>
 				</anchored>
 				<font>ct_header</font>
-				<static>Temp</static>
+				<static>Daze</static> <!-- True20 TODO add functionality; was Temp -->
 			</stringcontrol>
 			<stringcontrol name="label_nonlethal">
 				<anchored>
@@ -1398,7 +1423,7 @@
 					</top>
 				</anchored>
 				<font>ct_header</font>
-				<static>Subd</static>
+				<static>Hurt</static> <!--True20 was Subd ; Haven't yet changed function -->
 			</stringcontrol>
 			<stringcontrol name="label_wounds">
 				<anchored>

@@ -13,12 +13,16 @@ charsheet/scripts/charseet_powerattack.lua
 TODO
 
 * General
+- Update 3.5 stats with bonuses to True20 'bonuses only' model.  Characters
+  work fine 'as is' by entering the appropriate 3.5 base stat for any 
+  particular bonus, but this should eventually be corrected.
 - Add/update all built in effects to True20.
 
 * Base rolls
 - Implement mental grapple properly
 
 * Powers
+- Power check is currently kludged together using ActionSkill.performRoll.  This has several side effects and should be redone more carefully. 
 - implement fatigue check
 - track currently maintained powers?  
 - Add concentration check to power?
