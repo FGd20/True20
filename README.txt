@@ -1,14 +1,18 @@
-FGII Ruleset for Green Ronnin's True20 Adventures
+Fantasy Grounds II Ruleset for Green Ronnin's True20 Adventure Roleplaying
 
-This directory contains a ruleset for Smitwork's Fantasty Grounds II.  To use this 
-ruleset, this ruleset must be placed in the Fantasty Grounds II data
-directory.
+This repository contains a custom ruleset for Smitework's Fantasy Grounds II.
+To use/test this repository during development you should clone it to your
+FGII ruleset directory.  By default, FGII ruleset data is stored in:
+C:/User/Username/AppData/Roaming/Fantasy Grounds/rulesets
+Note, however, that a custom installation may require you to install the 
+ruleset elsewhere.
 
-By default, FGII data is stored in /User/Username/AppData/Roaming/Fantasy Grounds
+Once cloned, your fully-licensed host may create a new campaign using the 
+True20 ruleset as it exists in the repository.  FGII clients will recieve the
+ruleset as the players connect.  Updates to the ruleset repository will be 
+applied to any existing campaigns that have selected the True20 ruleset.
 
-The directory should be placed in the FGII data "rulesets" subdirectory.  When a 
-fully licensed host creates a new campaign, the True20 should be available to 
-select.
-
-Changes to the ruleset will affect campaign that are created using previous
-versions of the ruleset.
+Please note that this ruleset is created for/by hobbiests for use in their
+FGII sessions.  This ruleset is not supported or authorized by
+Smiteworks or Green Ronin.  Portions of the conversion may be incomplete
+or non-functional.  Use at your own risk.
