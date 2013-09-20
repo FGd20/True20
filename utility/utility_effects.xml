@@ -142,7 +142,7 @@
 		</sheetdata>
 	</windowclass>
 	
-	<windowclass name="effectlist">
+	<windowclass name="effectlist"> <!-- True20 THIS IS THE ADD EFFECTS WINDOW -->
 		<frame>utilitybox</frame>
 		<playercontrol />
 		<nodelete />

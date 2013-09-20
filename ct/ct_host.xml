@@ -1387,7 +1387,7 @@
 				<anchored>
 					<right>
 						<anchor>right</anchor>
-						<offset>-297</offset>
+						<offset>-290</offset> <!-- was 297 -->
 					</right>
 					<top>
 						<anchor>top</anchor>

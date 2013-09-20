@@ -128,6 +128,12 @@ function updateHealthDisplay()
 		end
 	end
 	
+    -- True20:  The updateHealthDisplay script determines if players view
+    -- wound information.  In 3.5 hiding hp makes sense.  It makes less
+    -- sense in True20.  For now, at least, things will always be visible
+    -- to revert back to original code, remove line below.
+	bShowHealth = true; -- This is the line to remove
+	
 	if bShowHealth then
 		hp.setVisible(true);
 		hptemp.setVisible(true);

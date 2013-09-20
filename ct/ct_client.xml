@@ -382,6 +382,7 @@
 		<minimize>minimized_combat</minimize>
 		<softclose />
 		<nodelete />
+
 		<script>
 			function onInit()
 				OptionsManager.registerCallback("SHPH", updateHealthDisplay);
@@ -435,7 +436,7 @@
 				<anchored>
 					<right>
 						<anchor>right</anchor>
-						<offset>-170</offset>
+						<offset>-160</offset> <!-- was 170 -->
 					</right>
 					<top>
 						<anchor>top</anchor>
