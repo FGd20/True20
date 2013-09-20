@@ -997,7 +997,7 @@
 				<description>
 					<text>Flat-footed AC</text>
 				</description>
-				<tabtarget prev="ac_final" next="ac_touch" />
+				<tabtarget prev="ac_final" next="ac_parry" />
 			</number_ct_underline>
 			<label_ct_sm name="ac_ff_label">
 				<anchored>
@@ -1005,6 +1005,26 @@
 				</anchored>
 				<static>FF</static>
 			</label_ct_sm>
+			
+			<number_ct_underline name="ac_parry">
+				<anchored>
+					<to>ac_flatfooted</to>
+					<position>righthigh</position>
+					<offset>40,0</offset> 
+				</anchored>
+				<description>
+					<text>Touch AC</text>
+				</description>
+				<tabtarget prev="ac_flatfooted" next="cmd" />
+			</number_ct_underline>
+			<label_ct_sm name="ac_parry_label">
+				<anchored>
+					<to>ac_parry</to>
+				</anchored>
+				<static>Pry</static>
+			</label_ct_sm>
+			
+			<!-- True20
 			<number_ct_underline name="ac_touch">
 				<anchored>
 					<to>ac_flatfooted</to>
@@ -1022,16 +1042,18 @@
 				</anchored>
 				<static>Tch</static>
 			</label_ct_sm>
+			-->
+			
 			<number_ct_underline name="cmd">
 				<anchored>
-					<to>ac_touch</to>
+					<to>ac_parry</to>
 					<position>righthigh</position>
 					<offset>40,0</offset> 
 				</anchored>
 				<description>
 					<text>CMD</text>
 				</description>
-				<tabtarget prev="ac_touch" next="fortitudesave" />
+				<tabtarget prev="ac_parry" next="fortitudesave" />
 			</number_ct_underline>
 			<label_ct_sm name="cmd_label">
 				<anchored>

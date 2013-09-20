@@ -345,6 +345,7 @@
 				<name>ac.sources.shield</name>
 				<op>+</op>
 			</source>
+
 			<source>
 				<name>ac.sources.size</name>
 				<op>+</op>
@@ -365,12 +366,12 @@
 				<name>ac.sources.temporary</name>
 				<op>+</op>
 			</source>
-			<!--
-			<ability>
-				<source>ac.sources.ability</source>
-				<default>strength</default>
-			</ability>
-			-->
+			<!-- ?? -->
+			<source>
+				<name>ac.sources.abilityparrymod</name>
+				<op>+</op>
+			</source>
+
 			<ability>
 				<source>ac.sources.abilityparry</source>
 				<default>strength</default>

@@ -5,21 +5,20 @@
   attribution and copyright information.
 -->
 
-<!-- root version="1.0" release="1" logo="True20.png" WOW This disables character drag! Why? -->
-<root version="3.0" release="1" logo="True20.png">
-	<!-- ATTRIBUTES --> 
+<root version="2.9" release="10" logo="logo.png">
+	<!-- ATTRIBUTES -->
 	<description>
 		<text>Fantasy ruleset for playing True20 Adventure Roleplaying (Green Ronin)</text>
-		<author>original author SmiteWorks USA, LLC; modification by user community for True20</author>
+		<author>original author SmiteWorks USA, LLC; modification by user community</author>
 		<website>http://www.fantasygrounds.com</website>
-	</description>	
+	</description>
 	<importinfo>
 		<acceptfrom ruleset="d20_JPG" />
 		<acceptfrom ruleset="d20" />
 		<acceptfrom ruleset="foundation" />
 		<acceptfrom ruleset="3.5E" />
 	</importinfo>
-	
+
 	<!-- GAME ELEMENTS -->
 	<includefile source="gameelements.xml" />
 

@@ -216,6 +216,7 @@
 	<icon name="portraitchat_mask" file="graphics/icons/portrait_chat_mask.png" />
 	<icon name="portrait_gm_token" file="graphics/icons/portrait_gm_token.png" />
 	<icon name="portrait_ruleset_token" file="graphics/icons/portrait_ruleset_token.png" />
+	<icon name="true20_ruleset_token" file="graphics/icons/true20_ruleset_token.png" />
 
 	<!-- Dice shadows -->
 	<icon name="diceshadow" file="graphics/icons/diceshadow.png" />

@@ -39,11 +39,20 @@ TODO
 * Add corruption score?
 
 * Implement autofire?
+-- Damage / toHit mechanics would have to be added
+-- True20 autofire weapons have a default clip size of 30 and use 10 ammo per burst, automate
+-- auto of ammo checks?
 
 * Remove 3.5isms from combat tracker and track attacks/damage as per True20
 
+----- Non True20 wishlist ----
+* Add GM selection option that allows players to share some host/GM functions.  For example:
+* Give clients that ability to add/remove effects from combat tracker and/or create campaign effects?
+- Add chat message that notes (for all) what has been done and by whom so nothing is done by mistake.
+* Give clients the ability to lock/unlock token movement.
 
 --- Known Bugs to address ---
 True20weapon Dmg Details:  Weapon base damage shadow is off target.
 True20power Power check details:  Power check base ranks shadow is off target.
+Parry Stat cycler (Combat sheet/combat tab):  Doesn't cycle.  Probable error in xml field.
 

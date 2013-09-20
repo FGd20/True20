@@ -8,8 +8,9 @@ function onInit()
 end
 
 function deliverLaunchMessage()
-    local msg = {sender = "", font = "emotefont", icon="portrait_ruleset_token"};
-    msg.text = "True20 v0.1 ruleset for Fantasy Grounds II.\rBased on Smiteworks USA LLC's 3.5E v2.9.3 ruleset."
+--    local msg = {sender = "", font = "emotefont", icon="portrait_ruleset_token"};
+    local msg = {sender = "", font = "emotefont", icon="true20_ruleset_token"};
+    msg.text = "True20 v0.1 ruleset for Fantasy Grounds II.\rBased on Smiteworks USA LLC's 3.5E v2.9.3 ruleset.\rThe Blood-dimmed Tide Edition"
     Comm.addChatMessage(msg);
     
     local launchmsg = ChatManager.retrieveLaunchMessages();

@@ -264,15 +264,17 @@ function linkPCFields()
 		grapple.setLink(nodeChar.createChild("attackbonus.grapple.total", "number"), true);
 		
 		ac_final.setLink(nodeChar.createChild("ac.totals.general", "number"), true);
-		ac_touch.setLink(nodeChar.createChild("ac.totals.touch", "number"), true);
+		--True20 ac_touch.setLink(nodeChar.createChild("ac.totals.touch", "number"), true);
+		ac_parry.setLink(nodeChar.createChild("ac.totals.parry", "number"), true); -- True20
 		ac_flatfooted.setLink(nodeChar.createChild("ac.totals.flatfooted", "number"), true);
 		cmd.setLink(nodeChar.createChild("ac.totals.cmd", "number"), true);
 		
 		fortitudesave.setLink(nodeChar.createChild("saves.fortitude.total", "number"), true);
 		reflexsave.setLink(nodeChar.createChild("saves.reflex.total", "number"), true);
 		willsave.setLink(nodeChar.createChild("saves.will.total", "number"), true);
+		toughnesssave.setLink(nodeChar.createChild("saves.toughness.total", "number"), true);
 		
-		sr.setLink(nodeChar.createChild("defenses.sr.total", "number"), true);
+		-- sr.setLink(nodeChar.createChild("defenses.sr.total", "number"), true);
 
 		init.setLink(nodeChar.createChild("initiative.total", "number"), true);
 	end
@@ -341,8 +343,13 @@ function setDefensiveVisible(v)
 
 	ac_final.setVisible(v);
 	ac_final_label.setVisible(v);
-	ac_touch.setVisible(v);
-	ac_touch_label.setVisible(v);
+	
+	-- True20
+	-- ac_touch.setVisible(v);
+	--ac_touch_label.setVisible(v);
+	ac_parry.setVisible(v);
+	ac_parry_label.setVisible(v);
+	
 	ac_flatfooted.setVisible(v);
 	ac_ff_label.setVisible(v);
 	

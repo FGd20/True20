@@ -36,6 +36,9 @@
 			end
 		</script>
 		<sheetdata>
+		<!-- True20:  This is not related to True20 per se, but we could replace the line
+			 "if User.isHost()" with "if true" in function onDragStart()
+			 in order to allow players to add themselves to the combat tracker. -->
 			<genericcontrol name="base">
 				<bounds>0,0,-1,-1</bounds>
 				<script>
