@@ -10,9 +10,8 @@ TODO
 - Implement mental grapple properly
 
 * Powers
-- Power check is currently kludged together using ActionSkill.performRoll.  This has several side effects and should be redone more carefully. 
-- implement fatigue check
-- track currently maintained powers?  
+- Power check is currently kludged together using ActionSkill.performRoll.  This has several side effects and should be redone more carefully.  Check how the fatigue check is now done (more developer experience was gained) 
+- Add powers maintained as a penalty to power check?  (Technically it increases the DC, but we want to SEE the save DC for chart lookups and would probably be better implemented as a check penalty).
 - Add concentration check to power?
 
 * Damage resolution

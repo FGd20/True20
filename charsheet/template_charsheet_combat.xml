@@ -707,7 +707,7 @@
 
 				function action(draginfo)
 					local rActor = ActorManager.getActor("pc", window.getDatabaseNode());
-					ActionSpell.performSaveRoll(draginfo, rActor, target[1]);
+					ActionSpell.performFatigueRoll(draginfo, rActor, target[1]);
 
 					return true;
 				end

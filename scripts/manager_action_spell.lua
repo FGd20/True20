@@ -305,6 +305,78 @@ function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName
 	ActionsManager.performSingleRollAction(draginfo, rActor, "save", rRoll, rCustom, bOverride);
 end
 
+-- True20: Implements Fatigue checks for power usage
+
+function performFatigueRoll(draginfo, rActor, sSave, sSaveDC)
+	 
+	-- Build basic roll
+	local rRoll = {};
+	rRoll.aDice = { "d20" };
+	rRoll.nMod = 0;
+	
+	-- True20:  Note the actor here is the power, NOT the character
+	local sAbility = nil;
+	if rActor then
+		if rActor.sType == "pc" then
+			rRoll.nMod = DB.getValue(rActor.nodeCreature, "...saves." .. sSave .. ".total", 0);
+			sAbility = DB.getValue(rActor.nodeCreature, "...saves." .. sSave .. ".ability", "");
+		elseif rActor.sType == "ct" or rActor.sType == "npc" then
+			if rActor.nodeCT then
+				rRoll.nMod = DB.getValue(rActor.nodeCT, sSave .. "save", 0);
+			else
+				rRoll.nMod = DB.getValue(rActor.nodeCreature, sSave .. "save", 0);
+			end
+		end
+	end
+	
+	-- Build the description
+	local bOverride = false;
+	rRoll.sDesc = "[SAVE] " .. string.upper(string.sub(sSave, 1, 1)) .. string.sub(sSave, 2);
+	rRoll.sDesc = string.format("%s %+d ", rRoll.sDesc, rRoll.nMod); -- True20
+	if bAddName then
+		rRoll.sDesc = "[ADDNAME] " .. rRoll.sDesc;
+	end
+	if bSecretRoll then
+		rRoll.sDesc = "[GM] " .. rRoll.sDesc;
+	end
+	if sAbility and sAbility ~= "" then
+		if (sSave == "fortitude" and sAbility ~= "constitution") or
+				(sSave == "reflex" and sAbility ~= "dexterity") or
+				(sSave == "toughness" and sAbility ~= "constitution") or -- True20
+				(sSave == "will" and sAbility ~= "wisdom") then
+			local sAbilityEffect = DataCommon.ability_ltos[sAbility];
+			if sAbilityEffect then
+				rRoll.sDesc = rRoll.sDesc .. " [MOD:" .. sAbilityEffect .. "]";
+			end
+		end
+	end
+	
+	-- True 20: Apply power usage modifers to the fatigue check
+	if sSaveDC then
+		local nPowersUsed = DB.getValue(rActor.nodeCreature, "...damage.powersused", 0);
+		local nMaintained = DB.getValue(rActor.nodeCreature, "...damage.powersmaintained", 0);
+		local nFatigueMod = nPowersUsed + 2*nMaintained;
+		local nTotalDC = sSaveDC + nFatigueMod;
+		
+		rRoll.sDesc = string.format("%s [VS DC %d][%s DC %s %+d power usage mod]",rRoll.sDesc,nTotalDC,rActor.sName, sSaveDC, nFatigueMod);
+		bOverride = true;
+	end
+	
+	if bRemoveOnMiss then
+		rRoll.sDesc = rRoll.sDesc .. " [RM]";
+	end
+
+	local rCustom = nil;
+	if rSource then
+		rCustom = {};
+		rCustom.sSourceCT = rSource.sCTNode;
+	end
+
+	-- Make the roll
+	ActionsManager.performSingleRollAction(draginfo, rActor, "save", rRoll, rCustom, bOverride);
+end -- function performFatigueRoll
+
+
 function modCastAttack(rSource, rTarget, rRoll)
 	if (#(rRoll.aDice) == 0) and (rRoll.nMod == 0) then
 		return;

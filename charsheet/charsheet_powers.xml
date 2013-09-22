@@ -75,6 +75,17 @@
 					<position>over</position>
 				</anchored>
 				<hideonvalue>0</hideonvalue>
+				<!-- makeing autoroll -->
+				<rollable />
+				<script> 
+				function onDoubleClick(x,y)
+					local rPowerNode = window.getDatabaseNode();
+					local rActor = ActorManager.getActor("pc", rPowerNode);
+					local sSaveDC = DB.getValue(rPowerNode, "fatigue", 0);					
+					ActionSpell.performFatigueRoll(draginfo, rActor, "will", sSaveDC);
+					return true;
+				end
+				</script>
 			</number_charpower>			
 			
 			<genericcontrol name="difficultyframe">
@@ -90,7 +101,10 @@
 					<name>bonus</name>
 				</frame>
 			</genericcontrol>
-			<number_charpower name="difficulty">
+			<number_charpower name="difficulty">			
+				<description>
+					<text>Power Difficulty</text>
+				</description>
 				<anchored>
 					<to>difficultyframe</to>
 					<position>over</position>
