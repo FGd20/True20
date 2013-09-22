@@ -13,7 +13,6 @@ function onInit()
 	bInitialized = true;
 	
 	acstat.onValueChanged();
-	acstatparry.onValueChanged();
 	--cmdbase.onValueChanged();
 	--cmdstat.onValueChanged();
 	fortitudestat.onValueChanged();

@@ -193,6 +193,36 @@
 				<class>charsheet_true20weaponlistitem</class>
 				<noscroll />
 			</list_chartrue20weapon>
+			
+			<!-- True20  I'm not certain that I like the visual for this.
+			<genericcontrol name="line_cmd">
+				<anchored>
+					<top>
+						<parent>true20weaponlist</parent>
+						<anchor>bottom</anchor>
+						<offset>0</offset>
+					</top>
+					<left>
+						<parent>dropcatcher</parent>
+						<anchor>left</anchor>
+						<offset>20</offset>
+					</left>
+					<right>
+						<parent>dropcatcher</parent>
+						<anchor>right</anchor>
+						<offset>-20</offset>
+					</right>
+					<size>
+						<height>3</height>
+					</size>
+				</anchored>
+				<frame>
+					<name>separatorline</name>
+				</frame>
+				<disabled />
+			</genericcontrol>
+			-->
+			
 				
 			<!-- DOOM: Actual list of active true20 powers -->
 			<list_charpower name="powerlist">

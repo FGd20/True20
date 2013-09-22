@@ -366,14 +366,13 @@
 				<name>ac.sources.temporary</name>
 				<op>+</op>
 			</source>
-			<!-- ?? -->
 			<source>
-				<name>ac.sources.abilityparrymod</name>
+				<name>ac.sources.parryabilitymod</name>
 				<op>+</op>
 			</source>
 
 			<ability>
-				<source>ac.sources.abilityparry</source>
+				<source>ac.sources.ability.parry</source>
 				<default>strength</default>
 			</ability>
 			<!--

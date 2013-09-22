@@ -108,13 +108,13 @@
 				<static>Total</static>
 			</label_fieldtop>
 	
-	<!--
+			<!-- True20:  I don't care for the visual
 			<genericcontrol name="line_cmd">
 				<anchored>
 					<top>
-						<parent>flatfootedac</parent>
+						<parent>ac</parent>
 						<anchor>bottom</anchor>
-						<offset>8</offset>
+						<offset>2</offset>
 					</top>
 					<left>
 						<parent>acframe</parent>
@@ -135,7 +135,8 @@
 				</frame>
 				<disabled />
 			</genericcontrol>
-	-->			
+			-->
+			
 			<number_charcombatmod name="acarmor" source="attackbonus.base">
 				<anchored>
 					<to>ac</to>
@@ -209,6 +210,7 @@
 					<name>ac.sources.ability</name>
 				</source>
 			</cycler_charcombatability>
+			<!--
 			<cycler_charcombatability name="acstatparry">
 				<anchored>
 					<to>acstat</to>
@@ -216,11 +218,12 @@
 					<offset>0,34</offset>
 				</anchored>
 				<baseability>strength</baseability>
-				<fieldabilitymod>acstatmodparry</fieldabilitymod>
+				<fieldabilitymod>acstatparrymod</fieldabilitymod>
 				<source>
-					<name>ac.sources.parryability</name>
+					<name>ac.sources.ability.parry</name>
 				</source>
 			</cycler_charcombatability>
+			-->
 
 			<number_charcombatabilitymod name="acstatmod" source="ac.sources.abilitymod">
 				<anchored>
@@ -238,7 +241,7 @@
 					</size>
 				</anchored>
 			</number_charcombatabilitymod>		
-			<number_charcombatabilitymod name="acstatmodparry" source="ac.sources.parryability">
+			<number_charcombatabilitymod name="acstatparrymod" source="ac.sources.parryabilitymod">
 				<anchored>
 					<to>acstatmoddodge</to>
 					<position>belowleft</position>
@@ -250,7 +253,7 @@
 			</number_charcombatabilitymod>
 			<string_charcombatmod_blank name="ffacstatmod">
 				<anchored>
-					<to>acstatmodparry</to>
+					<to>acstatparrymod</to>
 					<offset>0,6</offset>
 				</anchored>
 			</string_charcombatmod_blank>
