@@ -360,7 +360,7 @@
 				<static>Wounded</static>
 			</label_fieldtop>
 			
-			<number_charadd name="fatigue" source="damage.fatigue">
+			<number_charadd name="powersused" source="damage.powersused">
 				<anchored>
 					<to>wounded</to>
 					<position>right</position>
@@ -376,14 +376,14 @@
 			</number_charadd>
 			<label_fieldtop>
 				<anchored>
-					<to>fatigue</to>
+					<to>powersused</to>
 				</anchored>
-				<static>Fatigue</static>
+				<static>Used&lt;1h</static>
 			</label_fieldtop>
 			
-			<number_charadd name="powersused" source="damage.powersused">
+			<number_charadd name="powersmaintained" source="damage.powersmaintained">
 				<anchored>
-					<to>fatigue</to>
+					<to>powersused</to>
 					<position>right</position>
 					<offset>10</offset>
 					<size>
@@ -397,9 +397,9 @@
 			</number_charadd>
 			<label_fieldtop>
 				<anchored>
-					<to>powersused</to>
+					<to>powersmaintained</to>
 				</anchored>
-				<static>PowerUsed</static>
+				<static>Maintained</static>
 			</label_fieldtop>
 					
 			<label name="nonlethallabel">
@@ -424,9 +424,9 @@
 				<anchored>
 					<to>hpframe</to>
 					<position>insidetopleft</position>
-					<offset>265,63</offset>
+					<offset>246,63</offset>
 				</anchored>
-				<static>Fatigue</static>
+				<static>Power fatigue</static>
 			</label>
 
 			<!-- RACE -->
@@ -599,19 +599,7 @@
 				</anchored>
 				<static>Search</static>
 			</label_charmainskill>
-<!-- Doom			
-			<button_charmainskill name="perception">
-				<skill>Perception</skill>
-				<invisible />
-			</button_charmainskill>
-			<label_charmainskill name="label_perception">
-				<anchored>
-					<to>perception</to>
-				</anchored>
-				<static>Percept.</static>
-				<invisible />
-			</label_charmainskill>
--->			
+			
 			<string_labeled name="senses">
 				<anchored>
 					<to>sensesframe</to>
@@ -706,7 +694,8 @@
 
 			<!-- ARMOR CLASS -->
 			<frame_char name="acframe">
-				<bounds>400,0,95,255</bounds>
+				<!-- bounds>400,0,95,255</bounds-->
+				<bounds>400,0,95,204</bounds>
 			</frame_char>
 			
 			<number_chartotalac name="ac" source="ac.totals.general">
@@ -787,9 +776,10 @@
 			
 			<!-- SAVES -->
 			<frame_char name="saveframe">
-				<bounds>400,255,95,225</bounds>
+				<!--bounds>400,255,95,225</bounds-->
+				<bounds>400,204,95,276</bounds>
 			</frame_char>
-<!-- Doom		
+<!-- True20		
 			<number_charsr name="spellresistance" source="defenses.sr.total">
 				<anchored>
 					<to>saveframe</to>
@@ -857,7 +847,7 @@
 				</anchored>
 				<static>Will</static>
 			</label_fieldtop>
-<!-- Doom -->
+<!-- True20-->
 			<number_charsavetough name="toughness" source="saves.toughness.total">
 				<anchored>
 					<to>will</to>
@@ -867,13 +857,32 @@
 						<height>28</height>
 					</size>
 				</anchored>
+				<nonlethal />
 			</number_charsavetough>
 			<label_fieldtop>
 				<anchored>
 					<to>toughness</to>
 				</anchored>
-				<static>Toughness</static>
+				<static>Tough(NL)</static>
 			</label_fieldtop>
+			
+			<number_charsavetough name="toughnessL" source="saves.toughness.total">
+				<anchored>
+					<to>toughness</to>
+					<position>below</position>
+					<offset>0,23</offset>
+					<size>
+						<height>28</height>
+					</size>
+				</anchored>
+				<lethal />
+			</number_charsavetough>
+			<label_fieldtop>
+				<anchored>
+					<to>toughnessL</to>
+				</anchored>
+				<static>Tough(L)</static>
+			</label_fieldtop>		
 	
 		</sheetdata>
 	</windowclass>

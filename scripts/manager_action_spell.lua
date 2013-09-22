@@ -217,7 +217,12 @@ function getSaveVsRoll(rActor, rAction)
 	return rRoll;
 end
 
-function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName, rSource, bRemoveOnMiss)
+-- True20: changes to implement damage mods to Toughness saves
+-- function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName, rSource, bRemoveOnMiss)
+function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName, rSource, bRemoveOnMiss, bNonLethal, bLethal)
+	-- True20 Note:  To implement weapon damage, we need to call this function with the total weapon
+	--   			 damage difficulty as sSaveDC
+		 
 	-- Build basic roll
 	local rRoll = {};
 	rRoll.aDice = { "d20" };
@@ -241,6 +246,7 @@ function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName
 	-- Build the description
 	local bOverride = false;
 	rRoll.sDesc = "[SAVE] " .. string.upper(string.sub(sSave, 1, 1)) .. string.sub(sSave, 2);
+	rRoll.sDesc = string.format("%s %+d ", rRoll.sDesc, rRoll.nMod); -- True20
 	if bAddName then
 		rRoll.sDesc = "[ADDNAME] " .. rRoll.sDesc;
 	end
@@ -258,6 +264,29 @@ function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName
 			end
 		end
 	end
+	
+	-- True 20: implement damage penalites to toughness saves
+	-- Apply Lethal mods, Non-lethal modes, neither (Base toughness check), or both!
+	if (sSave == "toughness") then
+		local nBruised = DB.getValue(rActor.nodeCreature, "damage.bruised", 0);
+		local nDazed = DB.getValue(rActor.nodeCreature, "damage.dazed", 0);
+		local nHurt = DB.getValue(rActor.nodeCreature, "damage.hurt", 0);
+		local nWounded = DB.getValue(rActor.nodeCreature, "damage.wounded", 0);
+		local nDamageMod = 0;
+		if bLethal then
+			nDamageMod = -(nHurt + nWounded);
+			rRoll.sDesc = string.format("%s [Lethal DAM %+d]", rRoll.sDesc, nDamageMod);
+			rRoll.nMod = rRoll.nMod + nDamageMod;
+		end
+		if bNonLethal then
+			nDamageMod = -(nBruised + nDazed);
+			rRoll.sDesc = string.format("%s [Non-lethal DAM %+d]", rRoll.sDesc, nDamageMod);
+			rRoll.nMod = rRoll.nMod + nDamageMod;
+		end
+	end
+
+	
+	
 	if sSaveDC then
 		rRoll.sDesc = rRoll.sDesc .. " [VS DC " .. sSaveDC .. "]";
 		bOverride = true;

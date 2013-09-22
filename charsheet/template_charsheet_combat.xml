@@ -691,8 +691,8 @@
 		</number_chartotalwithability>
 	</template>
 	
-
-	<template name="number_charsave">
+	<!-- ORIG
+		<template name="number_charsave">
 		<number_chartotalwithability>
 			<rollable />
 			<displaysign />
@@ -722,6 +722,40 @@
 			</script>
 		</number_chartotalwithability>
 	</template>
+	--> 
+
+	<!-- True 20:  Updates to perforSaveRoll call add lethal/nonlethal tags to support damage mods to toughness -->
+	<template name="number_charsave">
+		<number_chartotalwithability>
+			<rollable />
+			<displaysign />
+			<modifiersize>mini</modifiersize>
+			<script>
+				function onInit()
+					addSourceWithOp("saves." .. target[1] .. ".base", "+");
+					addSourceWithOp("saves." .. target[1] .. ".misc", "+");
+				
+					super.onInit();
+				end
+
+				function action(draginfo)
+					local rActor = ActorManager.getActor("pc", window.getDatabaseNode());
+					ActionSpell.performSaveRoll(draginfo, rActor, target[1], nil, false, nil, nil, nil, nonlethal, lethal);
+					return true;
+				end
+				
+				function onDragStart(button, x, y, draginfo)
+					return action(draginfo);
+				end
+
+				function onDoubleClick(x,y)
+					return action();
+				end
+			</script>
+		</number_chartotalwithability>
+	</template>
+	
+	
 	<template name="number_charsavefort">
 		<number_charsave>
 			<description>
@@ -762,7 +796,7 @@
 		</number_charsave>
 	</template>
 	
-	<!-- Doom -->
+	<!-- True20 -->
 	<template name="number_charsavetough">
 		<number_charsave>
 			<description>
@@ -778,10 +812,14 @@
 				<name>saves.toughness.armor</name>
 				<op>+</op>
 			</source>
+			<!-- True20:  Create the following tags to apply damage modifers to toughness in template instances
+			<lethal />
+			<nonlethal />
+			-->
 		</number_charsave>
 	</template>
 
-	<!-- Doom -->
+	<!-- True20 -->
 	<template name="number_charconviction">
 		<number_chartotal>
 			<modifiersize>mini</modifiersize>

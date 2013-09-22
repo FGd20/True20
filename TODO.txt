@@ -1,15 +1,3 @@
-Major LUA scripts to understand and modify:
-
-template_charsheet_general.xml
-
-base.xml
-- scripts/manager_action_ability.lua  attack damage heal etc...
-charsheet/scripts/manager_char.lua
-charsheet/scripts/charseet_powerattack.lua
-.._powerdamagetotal.lua
-
-
-
 TODO
 
 * General
@@ -29,7 +17,6 @@ TODO
 
 * Damage resolution
 - auto crit damage modifier automatically
-- auto apply total damage modifiers to toughness checks
 - auto resolve toughness checks and apply damage/effects: wounded, dazed, etc.
 
 * Recovery
