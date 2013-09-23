@@ -1,22 +1,32 @@
 TODO
 
 * General
-- Update 3.5 stats with bonuses to True20 'bonuses only' model.  Characters
-  work fine 'as is' by entering the appropriate 3.5 base stat for any 
-  particular bonus, but this should eventually be corrected.
+- Minor update 'required'? Currently using 3.5 ability scores to set bonuses 
+  equal to True20 model.  Characters work fine 'as is' by entering the 
+  appropriate 3.5 base stat but this should eventually be corrected.
 - Add/update all built in effects to True20.
 
-* Base rolls
-- Implement mental grapple properly
+* Combat Tracker
+- Link CT entries to charactersheet entries for players
 
-* Powers
-- Power check is currently kludged together using ActionSkill.performRoll.  This has several side effects and should be redone more carefully.  Check how the fatigue check is now done (more developer experience was gained) 
-- Add powers maintained as a penalty to power check?  (Technically it increases the DC, but we want to SEE the save DC for chart lookups and would probably be better implemented as a check penalty).
-- Add concentration check to power?
+* Combat
+- Implement mental grapple properly
+* Automatically use best of parry/dodge for melee attacks?
 
 * Damage resolution
-- auto crit damage modifier automatically
+- On a hit, output (to chat window) the damage done.  Include critical damage.
+- Allow this damage to be 'dragged' onto any token (or selected as target
+  prior to roll) resulting in that target making a toughness check.
 - auto resolve toughness checks and apply damage/effects: wounded, dazed, etc.
+
+* Powers
+- Power check is currently kludged together using ActionSkill.performRoll. This
+  has several side effects and should be redone more carefully.  Check how the 
+  fatigue check is now done (more developer experience was gained) 
+- Add powers maintained as a penalty to power check?  (Technically it increases
+  the DC, but we want to SEE the save DC for chart lookups and would probably 
+  be better implemented as a check penalty.  This would not be cannon RAW).
+- Add concentration check to power?
 
 * Recovery
 - Update rests?  
@@ -24,12 +34,15 @@ TODO
 
 * Add corruption score?
 
-* Implement autofire?
--- Damage / toHit mechanics would have to be added
--- True20 autofire weapons have a default clip size of 30 and use 10 ammo per burst, automate
--- auto of ammo checks?
+* Firearms
+- Add ballistic as an allowable damage type
+- Implement autofire?
+- This may not be necessary.  Multi-targetting and a user modifer may be the 
+  way to go here.
+- True20 autofire weapons have a default clip size of 30 and use 10 ammo per burst, automate
+  ammo checks?
 
-* Remove 3.5isms from combat tracker and track attacks/damage as per True20
+* Continue to remove 3.5isms from combat tracker and track attacks/damage as per True20
 
 ----- Non True20 wishlist ----
 * Add GM selection option that allows players to share some host/GM functions.  For example:
@@ -38,7 +51,5 @@ TODO
 * Give clients the ability to lock/unlock token movement.
 
 --- Known Bugs to address ---
-True20weapon Dmg Details:  Weapon base damage shadow is off target.
-True20power Power check details:  Power check base ranks shadow is off target.
-Parry Stat cycler (Combat sheet/combat tab):  Doesn't cycle.  Probable error in xml field.
-
+True20weapon Dmg Details:  Weapon base damage shadow/hover outline is missized.
+True20power Power check details:  Power check base ranks shadow/hover outline is missized.

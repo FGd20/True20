@@ -672,7 +672,8 @@ function onSave(rSource, rTarget, rRoll, rCustom)
 				end
 			end
 		else
-			rMessage.text = rMessage.text .. " [FAILURE]";
+			-- True 20
+			rMessage.text = rMessage.text .. " [FAILED BY ".. nSaveDC - nTotal .."]";
 		end
 	end
 	

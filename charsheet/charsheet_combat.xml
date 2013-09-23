@@ -107,36 +107,7 @@
 				</anchored>
 				<static>Total</static>
 			</label_fieldtop>
-	
-			<!-- True20:  I don't care for the visual
-			<genericcontrol name="line_cmd">
-				<anchored>
-					<top>
-						<parent>ac</parent>
-						<anchor>bottom</anchor>
-						<offset>2</offset>
-					</top>
-					<left>
-						<parent>acframe</parent>
-						<anchor>left</anchor>
-						<offset>20</offset>
-					</left>
-					<right>
-						<parent>acframe</parent>
-						<anchor>right</anchor>
-						<offset>-20</offset>
-					</right>
-					<size>
-						<height>3</height>
-					</size>
-				</anchored>
-				<frame>
-					<name>separatorline</name>
-				</frame>
-				<disabled />
-			</genericcontrol>
-			-->
-			
+
 			<number_charcombatmod name="acarmor" source="attackbonus.base">
 				<anchored>
 					<to>ac</to>
@@ -200,6 +171,7 @@
 				<static>Shield</static>
 			</label_fieldtop>
 
+			<!--
 			<cycler_charcombatability name="acstat">
 				<anchored>
 					<to>acshield</to>
@@ -210,28 +182,15 @@
 					<name>ac.sources.ability</name>
 				</source>
 			</cycler_charcombatability>
-			<!--
-			<cycler_charcombatability name="acstatparry">
-				<anchored>
-					<to>acstat</to>
-					<position>belowleft</position>
-					<offset>0,34</offset>
-				</anchored>
-				<baseability>strength</baseability>
-				<fieldabilitymod>acstatparrymod</fieldabilitymod>
-				<source>
-					<name>ac.sources.ability.parry</name>
-				</source>
-			</cycler_charcombatability>
 			-->
 
-			<number_charcombatabilitymod name="acstatmod" source="ac.sources.abilitymod">
+			<number_charcombatabilitymod name="acstatmod" source="abilities.dexterity.bonus">
 				<anchored>
 					<to>acshield</to>
 					<offset>44,0</offset>
 				</anchored>
 			</number_charcombatabilitymod>
-			<number_charcombatabilitymod name="acstatmoddodge" source="ac.sources.abilitymod">
+			<number_charcombatabilitymod name="acstatmoddodge" source="abilities.dexterity.bonus">
 				<anchored>
 					<to>acstatmod</to>
 					<position>belowleft</position>
@@ -241,7 +200,7 @@
 					</size>
 				</anchored>
 			</number_charcombatabilitymod>		
-			<number_charcombatabilitymod name="acstatparrymod" source="ac.sources.parryabilitymod">
+			<number_charcombatabilitymod name="acstatparrymod" source="abilities.strength.bonus">
 				<anchored>
 					<to>acstatmoddodge</to>
 					<position>belowleft</position>
@@ -259,9 +218,9 @@
 			</string_charcombatmod_blank>
 			<label_fieldtop>
 				<anchored>
-					<to>acstatmod</to>
+					<to>acstatmod</to> 
 					<left>
-						<parent>acstat</parent>
+						<parent>acstatmod</parent> <!-- was acstat -->
 						<anchor>left</anchor>
 					</left>
 				</anchored>

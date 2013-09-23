@@ -222,6 +222,7 @@ function modDamage(rSource, rTarget, rRoll)
 			bCritical = true;
 		end
 	end
+	--[[ TRUE20: Removing old base Crit.
 	if bCritical then
 		local aAddDamageTypes = {};
 		table.insert(aAddDesc, "[CRITICAL]");
@@ -253,7 +254,22 @@ function modDamage(rSource, rTarget, rRoll)
 			table.insert(aDamageTypes, v);
 		end
 	end
+	]]-- TRUE20: END Removing Crits
 	
+	-- True20 Crits:  Note, currently the True20 Crit bonus is sent in the nMult field for 3.5 style crits.
+	if bCritical then
+		local aAddDamageTypes = {};
+		for _,v in pairs(aDamageTypes) do
+			local critMod = v.nMult or 2; -- v.nMult is undefined if it is 2 elsewhere, otherwise it has a value;
+			nAddMod = nAddMod + critMod;
+			table.insert(aAddDamageTypes, { sType = v.sType, nDice = v.nDice, nMod = v.nMod + critMod, nMult = critMod });
+		end -- foreach damage type
+		for _,v in ipairs(aAddDamageTypes) do
+			table.insert(aDamageTypes, v);
+			table.insert(aAddDesc, "[CRITICAL +" .. v.nMult .."]");
+		end		
+	end -- is a True20 critical
+		
 	-- IS HALF?
 	local bHalf = ModifierStack.getModifierKey("DMG_HALF");
 	if bHalf then
@@ -1379,6 +1395,38 @@ function decodeDamageText(nDamage, sDamageDesc)
 end
 
 function applyDamage(rSource, rTarget, sDamage, nTotal)
+
+    -- True20 version
+	-- SETUP
+	local aNotifications = {};
+	table.insert(aNotifications, "[True20 autodamage not yet implemented]");
+
+	-- DECODE DAMAGE DESCRIPTION
+	local rDamageOutput = decodeDamageText(nTotal, sDamage); -- True20: This is the toughness difficulty
+
+	-- ROLL TOUGHNESS (with Lethal or Non-Lethal wound modifiers/conditions as appropriate)
+	local lethal = true;
+	local nonlethal = false;
+	if string.match(sDamage, "nonlethal") then
+		nonlethal = true;
+		lethal = false;
+	end
+	
+	local type = rDamageOutput.sType;
+	local sSaveDC = rDamageOutput.nVal + 15;
+	
+	--table.insert(aNotifications, "[".. sDamage .."]");
+	if type == "damage" then
+		local draginfo = nil;
+		ActionSpell.performSaveRoll(draginfo, rTarget, "toughness", sSaveDC, false, nil, nil, nil, nonlethal, lethal);
+	end
+	
+	-- APPLY DAMAGE
+	
+	-- APPLY EFFECTS/CONDITIONS
+	
+	
+--[[ START 3.5 style apply damage code block
 	-- SETUP
 	local nTotalHP = 0;
 	local nTempHP = 0;
@@ -1606,10 +1654,11 @@ function applyDamage(rSource, rTarget, sDamage, nTotal)
 		DB.setValue(rTarget.nodeCT, "wounds", "number", nWounds);
 		DB.setValue(rTarget.nodeCT, "nonlethal", "number", nNonlethal);
 	end
+	]]-- end 3.5 style apply damage
 
 	-- OUTPUT RESULTS
 	messageDamage(rSource, rTarget, rDamageOutput.sTypeOutput, sDamage, rDamageOutput.sVal, table.concat(aNotifications, " "));
-end
+end -- applyDamage
 
 function messageDamage(rSource, rTarget, sDamageType, sDamageDesc, sTotal, sExtraResult)
 	if not (rTarget or sExtraResult ~= "") then

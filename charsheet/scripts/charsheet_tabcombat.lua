@@ -12,7 +12,7 @@ end
 function onInit()
 	bInitialized = true;
 	
-	acstat.onValueChanged();
+	--acstat.onValueChanged();
 	--cmdbase.onValueChanged();
 	--cmdstat.onValueChanged();
 	fortitudestat.onValueChanged();
