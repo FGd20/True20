@@ -36,7 +36,7 @@ save_ltos = {
 	["fortitude"] = "FORT",
 	["reflex"] = "REF",
 	["will"] = "WILL",
-        ["toughness"] = "TOUGH"
+    ["toughness"] = "TOUGH"
 };
 
 save_stol = {
@@ -162,7 +162,7 @@ bonuscomps = {
 	"FORT",
 	"REF",
 	"WILL",
-        "TOUGH"
+    "TOUGH"
 };
 
 -- Condition effect types for token widgets
@@ -271,6 +271,7 @@ immunetypes = {
 
 dmgtypes = {
 	"acid",  		-- ENERGY DAMAGE TYPES
+	"ballistic",    -- True20: Firearms
 	"cold",
 	"electricity",
 	"fire",

@@ -390,6 +390,7 @@
 			</button_iconcycler>
 
 			<!-- True 20: Changes to combat tracker damage tracking will go here -->
+			<!-- when changing names for these fields, also update manager_action_spell.lua -->
 			<number_ct name="wounds"> <!-- True20: wounds -->
 				<anchored>
 					<right>
@@ -939,7 +940,7 @@
 					<text>Will</text>
 				</description>
 				<target>will</target>
-				<tabtarget prev="reflexsave" next="toughness" />
+				<tabtarget prev="reflexsave" next="toughnesssave" />
 			</number_ct_save>
 			<label_ct_sm name="willlabel">
 				<anchored>

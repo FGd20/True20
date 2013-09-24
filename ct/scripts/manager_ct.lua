@@ -1080,9 +1080,14 @@ function addNpc(nodeNPC, sName)
 	end
 	DB.setValue(nodeEntry, "ac_flatfooted", "number", tonumber(sFlatFooted) or 10);
 	
+	-- True20:  Get CT Parry Defense from DEF string in NPC object
+	DB.setValue(nodeEntry, "ac_parry", "number", tonumber(string.match(sAC, "parry (%d+)")) or sAC);
+
+	
 	DB.setValue(nodeEntry, "fortitudesave", "number", DB.getValue(nodeNPC, "fortitudesave", 0));
 	DB.setValue(nodeEntry, "reflexsave", "number", DB.getValue(nodeNPC, "reflexsave", 0));
 	DB.setValue(nodeEntry, "willsave", "number", DB.getValue(nodeNPC, "willsave", 0));
+	DB.setValue(nodeEntry, "toughnesssave", "number", DB.getValue(nodeNPC, "toughnesssave", 0)); -- True20
 
 	-- Active properties
 	local nInitBonus = DB.getValue(nodeNPC, "init", 0);

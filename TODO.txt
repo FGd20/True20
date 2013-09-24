@@ -41,6 +41,12 @@ TODO
   be better implemented as a check penalty.  This would not be cannon RAW).
 - Add concentration check to power?
 
+* NPCS
+- Add powers instead of spells (npc_top, etc)?  For now, use skill entries for 
+  power checks 'or' in attack entries for attack-like powers.  This fails to
+  capture DCs and fatigue checks (put as descriptive text in other fields for now,
+  maybe as special attacks?)
+
 * Recovery
 - Update rests?  
 - Implement recovery check?

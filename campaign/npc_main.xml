@@ -63,7 +63,7 @@
 			<string_column name="ac" />
 			<label_column name="ac_label">
 				<anchor>ac</anchor>
-				<static>AC</static>
+				<static>DEF</static>
 			</label_column>
 
 			<string_column name="hd" />
@@ -117,6 +117,22 @@
 				</anchored>
 				<static>Will</static>
 			</label_fieldtop>
+			
+			<!-- True20 -->
+			<number_npc_save name="toughnesssave">
+				<anchor>willsave</anchor>
+				<description>
+					<text>Toughness save</text>
+				</description>
+				<target>toughness</target>
+			</number_npc_save>
+			<label_fieldtop name="toughnesssave_label">
+				<anchored>
+					<to>toughnesssave</to>
+				</anchored>
+				<static>Toughness</static>
+			</label_fieldtop>
+			
 			<label_column>
 				<anchor>fortitudesave</anchor>
 				<static>Saves</static>

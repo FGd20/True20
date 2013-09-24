@@ -268,11 +268,34 @@ function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName
 	-- True 20: implement damage penalites to toughness saves
 	-- Apply Lethal mods, Non-lethal modes, neither (Base toughness check), or both!
 	if (sSave == "toughness") then
-		local nBruised = DB.getValue(rActor.nodeCreature, "damage.bruised", 0);
-		local nDazed = DB.getValue(rActor.nodeCreature, "damage.dazed", 0);
-		local nHurt = DB.getValue(rActor.nodeCreature, "damage.hurt", 0);
-		local nWounded = DB.getValue(rActor.nodeCreature, "damage.wounded", 0);
+		local nBruised = 0;
+		local nDazed = 0;
+		local nHurt = 0;
+		local nWounded = 0;
 		local nDamageMod = 0;
+		
+		if rActor.sType == "pc" then 
+			nBruised = DB.getValue(rActor.nodeCreature, "damage.bruised", 0);
+			nDazed = DB.getValue(rActor.nodeCreature, "damage.dazed", 0);
+			nHurt = DB.getValue(rActor.nodeCreature, "damage.hurt", 0);
+			nWounded = DB.getValue(rActor.nodeCreature, "damage.wounded", 0);
+		end -- get current wounds stats for PCs
+		
+		if ((rActor.sType == "ct") or (rActor.sType == "npc")) then
+			if rActor.nodeCT then
+			    -- True20: The names of the fields in ct_host/client need to be updated!
+				nBruised = DB.getValue(rActor.nodeCT, "hp", 0);
+				nDazed = DB.getValue(rActor.nodeCT, "hptemp", 0);
+				nHurt = DB.getValue(rActor.nodeCT, "nonlethal", 0);
+				nWounded = DB.getValue(rActor.nodeCT, "wounds", 0);
+			else
+				rRoll.sDesc = rRoll.sDesc .. "[True20 error: Actor DB not known]";
+			end
+		end -- get wound stats for non-PC CT entries
+		
+		-- DEBUGGING
+		rRoll.sDesc = rRoll.sDesc .. rActor.sType;
+
 		if bLethal then
 			nDamageMod = -(nHurt + nWounded);
 			rRoll.sDesc = string.format("%s [Lethal DAM %+d]", rRoll.sDesc, nDamageMod);
@@ -283,9 +306,8 @@ function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName
 			rRoll.sDesc = string.format("%s [Non-lethal DAM %+d]", rRoll.sDesc, nDamageMod);
 			rRoll.nMod = rRoll.nMod + nDamageMod;
 		end
-	end
-
-	
+	end -- if toughness check
+    -- END True 20 toughness check penalties	
 	
 	if sSaveDC then
 		rRoll.sDesc = rRoll.sDesc .. " [VS DC " .. sSaveDC .. "]";

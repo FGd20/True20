@@ -56,7 +56,8 @@ function update()
 			if bPFMode then
 				babgrp_label.setValue("BAB / CM");
 			else
-				babgrp_label.setValue("BAB / Grp");
+				-- babgrp_label.setValue("BAB / Grp");
+				babgrp_label.setValue("Combat Bonus");  -- True20
 			end
 		end
 	end
@@ -72,6 +73,7 @@ function update()
 	else
 		updateControl("alignment", bLock);
 	end
+	
 	updateControl("init", bLock);
 	updateControl("cr", bLock, 0);
 	if bPFMode then
@@ -98,6 +100,7 @@ function update()
 	updateControl("fortitudesave", bLock);
 	updateControl("reflexsave", bLock);
 	updateControl("willsave", bLock);
+	updateControl("toughnesssave", bLock); -- True20
 	updateControl("specialqualities", bLock);
 	
 	updateControl("speed", bLock);
@@ -139,4 +142,12 @@ function update()
 	updateControl("crew", bLock, 0);
 	updateControl("decks", bLock);
 	updateControl("weapons", bLock);
+	
+	-- True20
+	alignment.setVisible(false);
+	alignment_label.setVisible(false);
+	hd.setVisible(false);
+	hd_label.setVisible(false);
+	-- End True20 display off block
+	
 end
