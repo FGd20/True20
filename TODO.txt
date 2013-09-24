@@ -7,20 +7,33 @@ TODO
 - Add/update all built in effects to True20.
 
 * Combat Tracker
-- Link CT entries to charactersheet entries for players
+- Issue to fix: Implemented dropping damage onto GM CT non-lethal damage areas 
+  (bruised, dazed) rolls toughness with non-lethal damage mods.  Likewise
+  dropping damage onto GM/Host CT lethal damage areas does lethal damage (unless
+  the damage was already TYPE: nonlethal).  BUT the client-side CT script always
+  does a check using lethal modifiers.  Too tired to track this down atm, so adding
+  it here for future effort.
+- When impelementing damage in CT I used existing field names from 3.5 version.  The
+  field names should be changed in ct/ct_hosts,ct_clients and in ct/scripts/ct_entry
+  in order to track down all usage of the old field names and prevent side effects
+- When dealing with the issue above, also update onWoundsChanged() and decide how
+  we would like to color damage.  Should accumulated hurt/wounds eventually turn red?
+  should that point be determined based on the character's toughness.  For example"
+  red:  On a toughness roll of a 1, you could die
+  yellow: On a roll of a 1, you could become disabled.
+  green: On a roll of 1 1, you could take a wound.
+  Would this be nice, or distracting?  It depends on the incoming damage, of course,
+  so what would be the 'typical' damage used for coloring?
 
 * Combat
 - Implement mental grapple properly
-* Automatically use best of parry/dodge for melee attacks?
+- ?? Automatically use best of parry/dodge for melee attack defense
 
 * Damage resolution
-- On a hit, output (to chat window) the damage done.  Include critical damage.
-- Allow this damage to be 'dragged' onto any token (or selected as target
-  prior to roll) resulting in that target making a toughness check.
-- auto resolve toughness checks and apply damage/effects: wounded, dazed, etc.
+- ?? auto resolve toughness checks and apply damage/effects: wounded, dazed, etc.
 
 * Powers
-- Power check is currently kludged together using ActionSkill.performRoll. This
+- ?? Power check is currently kludged together using ActionSkill.performRoll. This
   has several side effects and should be redone more carefully.  Check how the 
   fatigue check is now done (more developer experience was gained) 
 - Add powers maintained as a penalty to power check?  (Technically it increases

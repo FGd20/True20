@@ -390,7 +390,7 @@
 			</button_iconcycler>
 
 			<!-- True 20: Changes to combat tracker damage tracking will go here -->
-			<number_ct name="wounds">
+			<number_ct name="wounds"> <!-- True20: wounds -->
 				<anchored>
 					<right>
 						<parent>friendfoe</parent>
@@ -422,7 +422,7 @@
 					end
 				</script>
 			</number_ct>
-			<number_ct name="nonlethal">
+			<number_ct name="nonlethal"> <!-- True20: hurt -->
 				<anchored>
 					<right>
 						<parent>wounds</parent>
@@ -444,7 +444,7 @@
 					function handleDrop(draginfo)
 						if draginfo.getType() == "number" then
 							local rActor = ActorManager.getActor("ct", window.getDatabaseNode());
-							ActionDamage.applyDamage(nil, rActor, draginfo.getDescription() .. " [TYPE: nonlethal]", draginfo.getNumberData());
+							ActionDamage.applyDamage(nil, rActor, draginfo.getDescription(), draginfo.getNumberData());
 						end
 					end
 
@@ -453,7 +453,7 @@
 					end
 				</script>
 			</number_ct>
-			<number_ct name="hptemp">
+			<number_ct name="hptemp"> <!-- True20: daze -->
 				<anchored>
 					<right>
 						<parent>nonlethal</parent>
@@ -472,12 +472,20 @@
 				<color>#FF0000AA</color>
 				<hideonvalue value="0" />
 				<tabtarget prev="hp" next="nonlethal" />
-				<script>
+				<!-- script to just add number on drag rather than applying damage
 					function handleDrop(draginfo)
 						if draginfo.getNumberData() &gt; 0 then
 							setValue(draginfo.getNumberData());
 						else
 							setValue(getValue() + draginfo.getNumberData());
+						end
+					end
+				-->
+				<script>
+					function handleDrop(draginfo)
+						if draginfo.getType() == "number" then
+							local rActor = ActorManager.getActor("ct", window.getDatabaseNode());
+							ActionDamage.applyDamage(nil, rActor, draginfo.getDescription() .. " [TYPE: nonlethal]", draginfo.getNumberData());
 						end
 					end
 
@@ -486,7 +494,7 @@
 					end
 				</script>
 			</number_ct>
-			<number_ct name="hp">
+			<number_ct name="hp"> <!-- True20: bruise -->
 				<anchored>
 					<right>
 						<parent>hptemp</parent>
@@ -502,8 +510,16 @@
 						<height>23</height>
 					</size>
 				</anchored>
+				<hideonvalue value="0" />
 				<tabtarget prev="initresult" next="hptemp" />
 				<script>
+					function handleDrop(draginfo)
+						if draginfo.getType() == "number" then
+							local rActor = ActorManager.getActor("ct", window.getDatabaseNode());
+							ActionDamage.applyDamage(nil, rActor, draginfo.getDescription() .. " [TYPE: nonlethal]", draginfo.getNumberData());
+						end
+					end
+				
 					function update()
 						window.onWoundsChanged();
 					end

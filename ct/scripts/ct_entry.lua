@@ -251,16 +251,25 @@ function setSpacerState()
 	end
 end
 
+-- True20:  Many changes here to link CT with new charactersheet fields
 function linkPCFields()
 	local nodeChar = link.getTargetDatabaseNode();
 	if nodeChar then
 		name.setLink(nodeChar.createChild("name", "string"), true);
 
+		--[[
 		hp.setLink(nodeChar.createChild("hp.total", "number"));
 		hptemp.setLink(nodeChar.createChild("hp.temporary", "number"));
 		nonlethal.setLink(nodeChar.createChild("hp.nonlethal", "number"));
 		wounds.setLink(nodeChar.createChild("hp.wounds", "number"));
+		]]--
 
+		--True20: Change the xml control names later to avoid confusion and sideeffects from existing usage
+		hp.setLink(nodeChar.createChild("damage.bruised", "number")); -- bruise
+		hptemp.setLink(nodeChar.createChild("damage.dazed", "number")); -- daze
+		nonlethal.setLink(nodeChar.createChild("damage.hurt", "number")); --hurt
+		wounds.setLink(nodeChar.createChild("damage.wounded", "number"));
+		
 		grapple.setLink(nodeChar.createChild("attackbonus.grapple.total", "number"), true);
 		
 		ac_final.setLink(nodeChar.createChild("ac.totals.general", "number"), true);

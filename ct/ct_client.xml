@@ -147,7 +147,15 @@
 						<height>23</height>
 					</size>
 				</anchored>
+				<!-- True20: Added handleDrop to ClientCT entry so that players can drop damage on NPCs.  Adding damage to baddies
+				 --  was previously a GM only perogative. -->
 				<script>
+					function handleDrop(draginfo)
+						if draginfo.getType() == "number" then
+							local rActor = ActorManager.getActor("ct", window.getDatabaseNode());
+							ActionDamage.applyDamage(nil, rActor, draginfo.getDescription(), draginfo.getNumberData());
+						end
+					end
 					function onValueChanged()
 						window.onWoundsChanged();
 					end
@@ -169,7 +177,16 @@
 						<height>23</height>
 					</size>
 				</anchored>
+				<!-- True20: Added handleDrop to ClientCT entry so that players can drop damage on NPCs.  Adding damage to baddies
+				 --  was previously a GM only perogative. -->
 				<script>
+					function handleDrop(draginfo)
+						if draginfo.getType() == "number" then
+							local rActor = ActorManager.getActor("ct", window.getDatabaseNode());
+							ActionDamage.applyDamage(nil, rActor, draginfo.getDescription(), draginfo.getNumberData());
+						end
+					end
+				
 					function onValueChanged()
 						window.onWoundsChanged();
 					end
@@ -192,7 +209,16 @@
 					</size>
 				</anchored>
 				<color>#FF0000AA</color>
+				<!-- True20: Added handleDrop to ClientCT entry so that players can drop damage on NPCs.  Adding damage to baddies
+				 --  was previously a GM only perogative. -->
 				<script>
+					function handleDrop(draginfo)
+						if draginfo.getType() == "number" then
+							local rActor = ActorManager.getActor("ct", window.getDatabaseNode());
+							ActionDamage.applyDamage(nil, rActor, draginfo.getDescription() .. " [TYPE: nonlethal]", draginfo.getNumberData());
+						end
+					end
+				
 					function onValueChanged()
 						window.onWoundsChanged();
 					end
@@ -214,7 +240,16 @@
 						<height>23</height>
 					</size>
 				</anchored>
+				
+				<!-- True20: Added handleDrop to ClientCT entry so that players can drop damage on NPCs.  Adding damage to baddies
+				 --  was previously a GM only perogative. -->
 				<script>
+					function handleDrop(draginfo)
+						if draginfo.getType() == "number" then
+							local rActor = ActorManager.getActor("ct", window.getDatabaseNode());
+							ActionDamage.applyDamage(nil, rActor, draginfo.getDescription() .. " [TYPE: nonlethal]", draginfo.getNumberData());
+						end
+					end
 					function onValueChanged()
 						window.onWoundsChanged();
 					end
