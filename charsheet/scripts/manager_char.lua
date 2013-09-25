@@ -624,10 +624,10 @@ function getMentalRollStructures(rActor, sAttack)
 	local rAttack = {};
 	rAttack.type = "attack";
 	rAttack.label = sAttack;
-	rAttack.range = "M";
+	rAttack.range = "Psychic";
 	if rActor then
 		rAttack.modifier = DB.getValue(rActor.nodeCreature, "attackbonus.mental.total", 0);
-		rAttack.stat = DB.getValue(rActor.nodeCreature, "attackbonus.mental.ability", "");
+		rAttack.stat = DB.getValue(rActor.nodeCreature, "saves.will.ability", "");
 	end
 	if rAttack.stat == "" then
 		rAttack.stat = "wisdom";

@@ -810,37 +810,17 @@
 				</anchored>
 			</number_charcombatmod>
 
-			<!-- TODO:  Make combat bonus and size bonus fields static "-".  Change ondrop behavior
-			            to mental grapple rather than current default (normal grapple) -->
-			<number_charcombatmod_static name="mentalbaseattackbonus">
+			<!-- True20:  Mental/Psychic combat uses will save for attack/defense -->
+			<number_charcombatmod_static name="mentalbaseattackbonus" source="saves.will.total">
 				<anchored>
 					<to>grapplebaseattackbonus</to>
 				</anchored>
 			</number_charcombatmod_static>
-			<cycler_charcombatability name="mentalstat">
-				<anchored>
-					<to>mentalbaseattackbonus</to>
-				</anchored>
-				<baseability>wisdom</baseability>
-				<fieldabilitymod>mentalstatmod</fieldabilitymod>
-				<source>
-					<name>attackbonus.mental.ability</name>
-				</source>
-			</cycler_charcombatability>
-			<number_charcombatabilitymod name="mentalstatmod" source="attackbonus.mental.abilitymod">
-				<anchored>
-					<to>mentalbaseattackbonus</to>
-					<offset>48,0</offset>
-				</anchored>
-			</number_charcombatabilitymod>
-			<number_charcombatmod name="mentalsize">
-				<anchored>
-					<to>mentalstatmod</to>
-				</anchored>
-			</number_charcombatmod>
 			<number_charcombatmod name="mentalmisc" source="attackbonus.mental.misc">
 				<anchored>
-					<to>mentalsize</to>
+					<to>grapplemisc</to>
+					<position>belowleft</position>
+					<offset>0,8</offset>
 				</anchored>
 			</number_charcombatmod>				
 			

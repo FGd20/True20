@@ -7,26 +7,31 @@ OOB_MSGTYPE_APPLYATK = "applyatk";
 OOB_MSGTYPE_APPLYHRFC = "applyhrfc";
 
 function onInit()
+	-- True20: Added mental
 	OOBManager.registerOOBMsgHandler(OOB_MSGTYPE_APPLYATK, handleApplyAttack);
 	OOBManager.registerOOBMsgHandler(OOB_MSGTYPE_APPLYHRFC, handleApplyHRFC);
 
 	ActionsManager.registerActionIcon("attack", "action_attack");
 	ActionsManager.registerActionIcon("fullattack", "action_attack");
 	ActionsManager.registerActionIcon("grapple", "action_attack");
+	ActionsManager.registerActionIcon("mental", "action_attack");
 	
 	ActionsManager.registerMultiHandler("fullattack", translateFullAttack);
 	
 	ActionsManager.registerTargetingHandler("attack", onTargeting);
 	ActionsManager.registerTargetingHandler("grapple", onTargeting);
 	ActionsManager.registerTargetingHandler("fullattack", onTargeting);
+	ActionsManager.registerTargetingHandler("mental", onTargeting);
 	
 	ActionsManager.registerModHandler("attack", modAttack);
 	ActionsManager.registerModHandler("grapple", modAttack);
+	ActionsManager.registerModHandler("mental", modAttack);
 	
 	ActionsManager.registerResultHandler("attack", onAttack);
 	ActionsManager.registerResultHandler("critconfirm", onAttack);
 	ActionsManager.registerResultHandler("misschance", onMissChance);
 	ActionsManager.registerResultHandler("grapple", onGrapple);
+	ActionsManager.registerResultHandler("mental", onMental);
 end
 
 function handleApplyAttack(msgOOB)
@@ -192,7 +197,7 @@ function performGrappleRoll(draginfo, rActor, rAction)
 	ActionsManager.performSingleRollAction(draginfo, rActor, "grapple", rRoll);
 end
 
--- Doom --
+-- True20 --
 function getMentalRoll(rActor, rAction)
 	local rRoll = {};
 	
@@ -201,11 +206,7 @@ function getMentalRoll(rActor, rAction)
 	rRoll.nMod = rAction.modifier or 0;
 	
 	-- Build description label
-	if OptionsManager.isOption("SYSTEM", "pf") then
-		rRoll.sDesc = "[CMB]";
-	else
-		rRoll.sDesc = "[Mental]";
-	end
+	rRoll.sDesc = "[Mental]";
 	if rAction.label and rAction.label ~= "" then
 		rRoll.sDesc = rRoll.sDesc .. " " .. rAction.label;
 	end
@@ -225,8 +226,11 @@ end
 
 function performMentalRoll(draginfo, rActor, rAction)
 	local rRoll = getMentalRoll(rActor, rAction);
-	
-	ActionsManager.performSingleRollAction(draginfo, rActor, "mental", rRoll);
+
+	-- True20:  Currently using "grapple" as default for effects/defense, etc.
+	--          need to update a lot of code elsewhere to complete the
+	--          "mental" attack type before mental attacks can be fully automated.
+	ActionsManager.performSingleRollAction(draginfo, rActor, "grapple", rRoll);
 end
 
 
@@ -645,6 +649,29 @@ function onGrapple(rSource, rTarget, rRoll)
 		Comm.deliverChatMessage(rMessage);
 	end
 end
+
+-- True20 --
+function onMental(rSource, rTarget, rRoll)
+	if OptionsManager.isOption("SYSTEM", "pf") then
+		onAttack(rSource, rTarget, rRoll);
+	else
+		local rMessage = ActionsManager.createActionMessage(rSource, rRoll);
+		
+		if rTarget then
+			rMessage.text = rMessage.text .. " [at " .. rTarget.sName .. "]";
+		end
+		
+		if not rSource then
+			rMessage.sender = nil;
+		end
+		Comm.deliverChatMessage(rMessage);
+	end
+end
+
+
+
+
+
 
 function onMissChance(rSource, rTarget, rRoll)
 	local rMessage = ActionsManager.createActionMessage(rSource, rRoll);

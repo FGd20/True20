@@ -27,6 +27,10 @@ TODO
 
 * Combat
 - Implement mental grapple properly
+  - Mental grapple is currently typed as a "grapple"; need to add a "mental" attack type in code that calculates
+    attack difficulty targets, effect calculations, etc.
+  - Mental grapple uses will saves (not toughness) to soak damage.  Will have to replicate toughness check code
+    using will save instead of toughness to determine psychic/nonlethal damage.
 - ?? Automatically use best of parry/dodge for melee attack defense
 
 * Damage resolution

@@ -653,6 +653,7 @@
 		</number_chartotalwithability>
 	</template>
 	
+<!-- True20 -->
 <template name="number_charmentaltotal">
 		<number_chartotalwithability>
 			<rollable />
@@ -661,13 +662,21 @@
 			<description>
 				<text>Mental</text>
 			</description>
-			<modifierfield>attackbonus.mental.temporary</modifierfield>
+			<modifierfield>attackbonus.mental.temporary</modifierfield> <!-- this is the little plus in the corner -->
+			<source>
+				<name>saves.will.base</name>
+				<op>+</op>
+			</source>
+			<source>
+				<name>saves.will.misc</name>
+				<op>+</op>
+			</source>
 			<source>
 				<name>attackbonus.mental.misc</name>
 				<op>+</op>
 			</source>
 			<ability>
-				<source>attackbonus.mental.ability</source>
+				<source>saves.will.ability</source>
 				<default>wisdom</default>
 			</ability>
 			<script>

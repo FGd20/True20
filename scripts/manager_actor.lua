@@ -640,6 +640,7 @@ function getDefenseValue(rAttacker, rDefender, rRoll)
 		sDefenseStat3 = "strength";
 	end
 
+	-- True20 TODO: eventually need to add mental defense code here
 	if rDefender.nodeCreature and rDefender.sType == "pc" then
 		if rRoll.sType == "attack" or rRoll.sType == "castattack" then
 			nDefense = DB.getValue(rDefender.nodeCreature, "ac.totals.general", 10);
@@ -660,6 +661,7 @@ function getDefenseValue(rAttacker, rDefender, rRoll)
 				sDefenseStat3 = "strength";
 			end
 		end
+		
 	elseif rDefender.nodeCT then
 		if rRoll.sType == "attack" or rRoll.sType == "castattack" then
 			nDefense = DB.getValue(rDefender.nodeCT, "ac_final", 10);
