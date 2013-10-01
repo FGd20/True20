@@ -35,6 +35,7 @@ TODO
 
 * Damage resolution
 - ?? auto resolve toughness checks and apply damage/effects: wounded, dazed, etc.
+- Change current PC/NPC labels to actual target names
 
 * Powers
 - ?? Power check is currently kludged together using ActionSkill.performRoll. This
@@ -43,6 +44,7 @@ TODO
 - Add powers maintained as a penalty to power check?  (Technically it increases
   the DC, but we want to SEE the save DC for chart lookups and would probably 
   be better implemented as a check penalty.  This would not be cannon RAW).
+- Add Powers maintained modifier to concentration check
 - Add concentration check to power?
 
 * NPCS
@@ -58,7 +60,6 @@ TODO
 * Add corruption score?
 
 * Firearms
-- Add ballistic as an allowable damage type
 - Implement autofire?
 - This may not be necessary.  Multi-targetting and a user modifer may be the 
   way to go here.
