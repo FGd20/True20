@@ -438,6 +438,10 @@ skilldata = {
 			stat = "strength",
 			armorcheckmultiplier = 1
 		},
+	["Computers"] = {
+			stat = "intelligence",
+			trainedonly = 1
+	},
 	["Concentration"] = {
 			stat = "wisdom"
 		},
