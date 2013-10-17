@@ -25,6 +25,10 @@ function onAttackChanged()
 	attack1.onSourceUpdate();
 end
 
+function onPowerChanged()
+	powercheck.onSourceUpdate();
+end
+
 function onDamageChanged()
 	damagetotalbonus.onSourceUpdate();
 end

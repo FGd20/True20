@@ -580,18 +580,18 @@
 					<position>righthigh</position>
 					<offset>-3,-1</offset>
 					<size>
-						<height>15</height>
 						<width>35</width>
-					</size>
+						<height>15</height>  <!-- ToDo:  This should be 25, and the hover should be ON the frame; but that doesn't work! --> 
+						</size>
 				</anchored>
 				<frame>
 					<offset>3,5,3,5</offset>
-				</frame>
+				</frame>			
 				<tooltip>rank</tooltip>
 				<hideonvalue>0</hideonvalue>
 				<script>
 					function onValueChanged()
-						window.onDamageChanged();
+						window.onPowerChanged();
 					end
 				</script>
 			</number_charpower_sm>
@@ -616,9 +616,16 @@
 						<width>30</width>
 					</size>
 				</anchored>
+				<!-- Doom work in progress -->
+				<parameters>
+					<defaultlabel>None</defaultlabel>
+					<labels>Int|Wis|Cha|None</labels>
+					<values>intelligence|wisdom|charisma|none</values>
+				</parameters>
+				<!-- Doom work in progress ends -->
 				<script>
 					function onValueChanged()
-						window.onDamageChanged();
+						window.onPowerChanged();
 					end
 				</script>
 			</cycler_ability_sm>
@@ -646,7 +653,7 @@
 				<hideonvalue>0</hideonvalue>
 				<script>
 					function onValueChanged()
-						window.onDamageChanged();
+						window.onPowerChanged();
 					end
 				</script>
 			</number_charpower_sm>
