@@ -220,7 +220,7 @@ end
 -- True20: changes to implement damage mods to Toughness saves
 -- function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName, rSource, bRemoveOnMiss)
 function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName, rSource, bRemoveOnMiss, bNonLethal, bLethal)
-	-- True20 Note:  To implement weapon damage, we need to call this function with the total weapon
+	-- True20 Note:  To implement weapon damage, call this function with the total weapon
 	--   			 damage difficulty as sSaveDC
 		 
 	-- Build basic roll
@@ -294,16 +294,16 @@ function performSaveRoll(draginfo, rActor, sSave, sSaveDC, bSecretRoll, bAddName
 		end -- get wound stats for non-PC CT entries
 		
 		-- DEBUGGING
-		rRoll.sDesc = rRoll.sDesc .. rActor.sType;
+		rRoll.sDesc = rRoll.sDesc .. rActor.sName;
 
 		if bLethal then
 			nDamageMod = -(nHurt + nWounded);
-			rRoll.sDesc = string.format("%s [Lethal DAM %+d]", rRoll.sDesc, nDamageMod);
+			rRoll.sDesc = string.format("%s [%+d damage track penalty vs. lethal]", rRoll.sDesc, nDamageMod);
 			rRoll.nMod = rRoll.nMod + nDamageMod;
 		end
 		if bNonLethal then
 			nDamageMod = -(nBruised + nDazed);
-			rRoll.sDesc = string.format("%s [Non-lethal DAM %+d]", rRoll.sDesc, nDamageMod);
+			rRoll.sDesc = string.format("%s [%+d damage track penalty vs. nonlethal]", rRoll.sDesc, nDamageMod);
 			rRoll.nMod = rRoll.nMod + nDamageMod;
 		end
 	end -- if toughness check
@@ -693,11 +693,25 @@ function onSave(rSource, rTarget, rRoll, rCustom)
 					TargetingManager.removeTargetEx(nodeCT, rSource.sCTNode);
 				end
 			end
-		else
-			-- True 20
-			rMessage.text = rMessage.text .. " [FAILED BY ".. nSaveDC - nTotal .."]";
-		end
-	end
+		else -- Failed save
+		    nFailedBy = nSaveDC - nTotal;
+			rMessage.text = rMessage.text .. " [FAILED BY ".. nFailedBy .."]";
+			-- True20:  Add automage here!
+			if nFailedBy < 5 then
+				sDamageMessage = " [Manually apply: Bruised/Hurt]";
+			elseif nFailedBy < 10 then
+				sDamageMessage = " [Manually apply: Dazed/Wounded]";
+			elseif nFailedBy < 15 then
+				sDamageMessage = " [Manually apply: Staggered/Disabled]";
+			elseif nFailedBy < 20 then
+				sDamageMessage = " [Manually apply: Unconscious/Dying]";	
+			else
+				sDamageMessage = " [Manually apply: Unconscious/Dead]";
+			end
+			rMessage.text = rMessage.text .. sDamageMessage;
+			
+		end -- end if saved passed/failed
+	end -- endif save DC exists
 	
 	Comm.deliverChatMessage(rMessage);
 end

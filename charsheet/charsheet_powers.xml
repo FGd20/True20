@@ -316,16 +316,13 @@
 				<anchored>
 					<to>label_dmgdetail</to>
 					<position>righthigh</position>
-					<offset>-3,-1</offset>
+					<offset>0,-5</offset>
 					<size>
-						<height>15</height>
 						<width>35</width>
+						<height>25</height>
 					</size>
-				</anchored>
-				<frame>
-					<name>bonus</name>
-					<offset>3,5,3,5</offset>
-				</frame>
+				</anchored>	
+				<tooltip>base</tooltip>
 				<hideonvalue>0</hideonvalue>
 				<script>
 					function onValueChanged()
@@ -336,8 +333,8 @@
 			<label_sm name="label_dmgplus">
 				<anchored>
 					<to>damagebonusbase</to>
-					<position>right</position>
-					<offset>4</offset>
+					<position>righthigh</position>
+					<offset>3,6</offset>
 					<size>
 						<width>8</width>
 					</size>
@@ -374,12 +371,13 @@
 				<anchored>
 					<to>label_dmgplus2</to>
 					<position>righthigh</position>
-					<offset>0,-5</offset>
+					<offset>0,-6</offset>
 					<size>
 						<width>35</width>
 						<height>25</height>
 					</size>
 				</anchored>
+				<tooltip>misc</tooltip>
 				<hideonvalue>0</hideonvalue>
 				<script>
 					function onValueChanged()
@@ -578,15 +576,12 @@
 				<anchored>
 					<to>label_powercheckdetail</to>
 					<position>righthigh</position>
-					<offset>-3,-1</offset>
+					<offset>0,-5</offset>
 					<size>
 						<width>35</width>
-						<height>15</height>  <!-- ToDo:  This should be 25, and the hover should be ON the frame; but that doesn't work! --> 
-						</size>
-				</anchored>
-				<frame>
-					<offset>3,5,3,5</offset>
-				</frame>			
+						<height>25</height>
+					</size>
+				</anchored>	
 				<tooltip>rank</tooltip>
 				<hideonvalue>0</hideonvalue>
 				<script>
@@ -599,8 +594,8 @@
 			<label_sm name="label_powercheckplus">
 				<anchored>
 					<to>powercheckbase</to>
-					<position>right</position>
-					<offset>4</offset>
+					<position>righthigh</position>
+					<offset>3,6</offset>
 					<size>
 						<width>8</width>
 					</size>
@@ -616,13 +611,11 @@
 						<width>30</width>
 					</size>
 				</anchored>
-				<!-- Doom work in progress -->
 				<parameters>
 					<defaultlabel>None</defaultlabel>
 					<labels>Int|Wis|Cha|None</labels>
 					<values>intelligence|wisdom|charisma|none</values>
 				</parameters>
-				<!-- Doom work in progress ends -->
 				<script>
 					function onValueChanged()
 						window.onPowerChanged();
@@ -644,12 +637,13 @@
 				<anchored>
 					<to>label_powercheckplus2</to>
 					<position>righthigh</position>
-					<offset>0,-5</offset>
+					<offset>0,-6</offset>
 					<size>
 						<width>35</width>
 						<height>25</height>
 					</size>
 				</anchored>
+				<tooltip>misc</tooltip>
 				<hideonvalue>0</hideonvalue>
 				<script>
 					function onValueChanged()
@@ -657,10 +651,6 @@
 					end
 				</script>
 			</number_charpower_sm>
-			
-	
-			
-			
 			
 			
 			<spacer name="spacer">

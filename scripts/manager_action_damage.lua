@@ -1399,7 +1399,7 @@ function applyDamage(rSource, rTarget, sDamage, nTotal)
     -- True20 version
 	-- SETUP
 	local aNotifications = {};
-	table.insert(aNotifications, "[True20 autodamage not yet implemented]");
+	table.insert(aNotifications, "[True20: Making Toughness save...]");
 
 	-- DECODE DAMAGE DESCRIPTION
 	local rDamageOutput = decodeDamageText(nTotal, sDamage); -- True20: This is the toughness difficulty
