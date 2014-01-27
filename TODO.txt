@@ -75,3 +75,16 @@ TODO
 * Give clients the ability to lock/unlock token movement.
 
 --- Misc Bugs to address ---
+
+* Combat Tracker
+I tried dragging a newly generated NPC to the combat tracker and it added the guy twice and returned the following errors in the console window:
+
+Script Error: [string "ct/scripts/manager_ct.lua"]:1084: bad argument #4 to 'setValue' (number expected, got string)
+Script Error: [string "ct/scripts/manager_ct.lua"]:1084: bad argument #4 to 'setValue' (number expected, got string)
+
+* Combat Tracker
+Entries are not persistent between start-ups
+
+* Character Sheet
+Defense values do not autoupdate properly on initial open.  Changing values causes defenses to recalculate to correct values.
+
